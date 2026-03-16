@@ -544,3 +544,4 @@ Please add '/usr/local/lib' to the env LD_LIBRARY_PATH.
   source ~/.bashrc
   ```
 # camera and lidar sync
+fdsh
