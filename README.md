@@ -543,5 +543,39 @@ Please add '/usr/local/lib' to the env LD_LIBRARY_PATH.
   export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
   source ~/.bashrc
   ```
-# camera and lidar sync
-fdsh
+
+## 7. camera and lidar sync
+
+### 7.1 ROS1
+
+#### 同步节点启动
+
+1. 先正常启动mid360
+
+``` SHELL
+source ~/Projects/livox_ws/devel/setup.sh
+roslaunch livox_ros_driver2 msg_MID360.launch
+```
+
+2. 随后启动同步节点
+
+``` SHELL
+source ~/Projects/livox_ws/devel/setup.sh
+roslaunch livox_ros_driver2 msg_MID360_sync.launch
+```
+
+#### 话题录制
+
+1. 查看话题列表
+```SHELL
+rostopic list
+```
+
+2. 录制话题
+```SHELL
+source ~/Projects/livox_ws/devel/setup.sh
+source ~/Projects/catkin_ws/devel/setup.sh
+rosbag record -O synced_data.bag /synced_image /synced_lidar /livox/imu
+```
+
+### 7.2 ROS2
